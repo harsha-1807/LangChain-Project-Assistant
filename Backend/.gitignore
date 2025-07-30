@@ -12,4 +12,5 @@ app/tests/.pytest_cache/
 *.coverage
 *.egg-info/
 
-app/__pycache__
+
+Backend\app\__pycache__
