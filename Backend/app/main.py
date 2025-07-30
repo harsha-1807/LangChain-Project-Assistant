@@ -5,20 +5,21 @@ from .models import User, Project, Task
 from .db import Base, engine, get_db
 from datetime import datetime, timedelta
 from sqlalchemy.orm import Session
+from fastapi.middleware.cors import CORSMiddleware
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Create all tables in the database if they don't exist
     Base.metadata.create_all(bind=engine)
 
-    # new DB session
+  
     db: Session = next(get_db())
 
     # Insert mock data only if users table is empty
     if not db.query(User).first():
         create_mock_data(db)
 
-    # Application runs here
+   
     yield  
 
    
@@ -26,6 +27,14 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"],  
+)
 
 app.include_router(api.router, prefix="/api", tags=["API"])
 
