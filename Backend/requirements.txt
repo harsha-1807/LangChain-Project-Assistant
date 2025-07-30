@@ -1,1 +1,1 @@
-fastapi sqlalchemy psycopg2-binary langchain openai uvicorn python-dotenv pytest
+fastapi sqlalchemy psycopg2-binary langchain uvicorn python-dotenv pytest langchain-community langchain-google-genai
