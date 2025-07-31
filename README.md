@@ -153,10 +153,4 @@ LangChain-Project-Assistant/
 
 ---
 
-## 🛠️ Contribution
-
-Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/harsha-1807/LangChain-Project-Assistant/issues).
-
----
-
 **Build your own AI-powered project assistant and supercharge your team productivity!**
