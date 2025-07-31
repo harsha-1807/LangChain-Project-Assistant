@@ -1,6 +1,6 @@
 # LangChain Project Assistant
 
-**LangChain Project Assistant** is a full-stack, AI-powered project management tool that enables users to track and manage projects, tasks, and team assignments seamlessly through a conversational chat interface.
+**LangChain Project Assistant** is a full-stack, AI-powered project management tool designed to simplify project tracking and team collaboration through an intuitive conversational chat interface. It empowers users to interact naturally with their project data—tasks, timelines, and team assignments—by asking plain-language questions and receiving insightful, context-aware responses.
 
 ---
 
