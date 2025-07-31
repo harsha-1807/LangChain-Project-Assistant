@@ -1,28 +1,42 @@
 # LangChain Project Assistant
 
-A full-stack AI-powered project management assistant that lets you track and manage your projects, tasks, and team assignments through a conversational chat interface.
+**LangChain Project Assistant** is a full-stack, AI-powered project management tool that enables users to track and manage projects, tasks, and team assignments seamlessly through a conversational chat interface.
 
 ---
 
 ## 🚀 Features
 
-- **Conversational Project Management:**  
-  Ask questions like:
+- **Conversational Project Management**  
+  Ask natural language questions like:
   - “What tasks are pending?”
-  - “What is Project Alpha ending date?”
+  - “Is Project Alpha delayed?”
   - “Who is assigned the most tasks?”
-- **AI-Powered Answers:**  
-  Uses LangChain and Google Generative AI for natural language understanding and retrieval.
-- **Modern UI:**  
-  Built with Next.js, TypeScript, and TailwindCSS for a responsive chat experience.
-- **Robust Backend:**  
-  FastAPI, SQLAlchemy, and FAISS for scalable, efficient data and AI operations.
-- **Cloud Database:**  
-  Uses NeonDB (PostgreSQL) for persistent, cloud-hosted storage.
+- **AI-Powered Answers**  
+  Uses LangChain, Google Generative AI embeddings, and FAISS for semantic search and natural language understanding.
+- **Modern and Responsive UI**  
+  Built with Next.js, TypeScript, and TailwindCSS for a sleek chat-based interface.
+- **Robust Backend**  
+  Powered by FastAPI and SQLAlchemy to handle API requests, AI processing, and database operations.
+- **Cloud-Hosted Database**  
+  Uses NeonDB (PostgreSQL) for persistent, scalable cloud storage.
+- **Modular Architecture**  
+  Clear separation of frontend, backend, and database layers allows easy customization and maintenance.
+- **Ready for Local Development and Cloud Deployment**
 
 ---
 
-## 🗂️ Project Structure Overview
+## 🧰 Tech Stack
+
+| Layer     | Technologies                                  |
+|-----------|----------------------------------------------|
+| Frontend  | Next.js, TypeScript, React, TailwindCSS     |
+| Backend   | FastAPI, LangChain, SQLAlchemy, FAISS       |
+| Database  | PostgreSQL (NeonDB cloud-hosted)             |
+| AI/Search | Google Generative AI embeddings, LangChain, FAISS |
+
+---
+
+## 📁 Project Structure
 
 ```
 LangChain-Project-Assistant/
@@ -44,99 +58,105 @@ LangChain-Project-Assistant/
     ├── requirements.txt
     └── ...
 ```
+## 🔗 Deployment Links
 
----
-
-## 🧠 Tech Stack
-
-- **Frontend:** Next.js, TypeScript, TailwindCSS
-- **Backend:** FastAPI, LangChain, SQLAlchemy, FAISS
-- **Database:** PostgreSQL (NeonDB cloud)
-- **AI:** Google Generative AI Embeddings, LangChain, FAISS (vector search)
-
----
-
-## 🛠️ Getting Started
-
-### 1. Clone the Repository
-
-```sh
-git clone https://github.com/harsha-1807/LangChain-Project-Assistant.git
-cd LangChain-Project-Assistant
-```
-
-### 2. Backend Setup
-
-```sh
-cd Backend
-python -m venv venv
-venv\Scripts\activate  # On Windows
-pip install -r requirements.txt
-```
-
-- Create a `.env` file in `Backend/` with your NeonDB connection string:
-  ```
-  DATABASE_URL=postgresql+psycopg2://<user>:<password>@<host>/<dbname>
-  GOOGLE_API_KEY = your_googleApi_key
-  ```
-
-- Start the FastAPI server:
-  ```sh
-  uvicorn app.main:app --reload
-  ```
-
-### 3. Frontend Setup
-
-```sh
-cd langchain-chat
-npm install
-npm run dev
-```
-
-- Open [http://localhost:3000](http://localhost:3000) to use the chat UI.
-
----
-
-## 💬 Example Questions
-
-- **Pending Tasks:**  
-  _“What tasks are pending?”_
-- **Project Status:**  
-  _“What is Project Alpha ending date?”_
-- **Top Assignee:**  
-  _“Who is assigned the most tasks?”_
+- **Frontend:** [https://lang-chain-project-assistant.vercel.app](https://lang-chain-project-assistant.vercel.app)
+- **Backend API:** [https://langchain-project-assistant.onrender.com](https://langchain-project-assistant.onrender.com)
 
 ---
 
 ## 🤖 How It Works
 
--   **User** interacts with the chat UI (Next.js).
--   **Frontend** sends questions to the FastAPI backend.
--   **Backend** leverages **LangChain** to:
-    * **Embed** your database's project, task, and user data into a **FAISS vector store** using **Google's `gemini-embedding-001`**.
-    * Perform **similarity search** to retrieve relevant context for the user's query.
-    * Utilize **Google's `gemini-2.5-flash` LLM** to generate answers based on the retrieved context.
--   **Database** stores all project, task, and user information.
+1. **User interacts** with the chat interface in the frontend.  
+2. The **frontend sends queries** to the FastAPI backend.  
+3. The **backend uses LangChain** and **Google Generative AI** embeddings to embed and semantically search your project data stored in PostgreSQL (NeonDB) using FAISS vector search.  
+4. Google’s `gemini-2.5-flash` LLM generates natural language answers based on the retrieved context.  
+5. The **assistant responds** conversationally with relevant project and task information.
 
 ---
+---
+
+## 🚀 Getting Started
+
+### Backend Setup
+
+1. Navigate to backend folder and create a virtual environment:
+
+    ```
+    cd Backend
+    python -m venv venv
+    source venv/bin/activate     # macOS/Linux
+    # or
+    venv\Scripts\activate        # Windows
+    ```
+
+2. Install dependencies:
+
+    ```
+    pip install -r requirements.txt
+    ```
+
+3. Create a `.env` file inside `Backend/` and add your configuration:
+
+    ```
+    DATABASE_URL=postgresql+psycopg2://<user>:<password>@<host>/<dbname>
+    GOOGLE_API_KEY=your_google_api_key
+    ```
+
+4. Start the backend server (development mode):
+
+    ```
+    uvicorn app.main:app --reload
+    ```
+
+### Frontend Setup
+
+1. Navigate to frontend folder and install dependencies:
+
+    ```
+    cd langchain-chat
+    npm install
+    ```
+
+2. Create an `.env.local` file in `langchain-chat/`:
+
+    ```
+    NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+    ```
+
+3. Run the frontend development server:
+
+    ```
+    npm run dev
+    ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to access the chat UI.
+
+---
+
+
 
 ## 📦 Key Dependencies
 
-- **Frontend:**  
-  - next, react, tailwindcss
-- **Backend:**  
-  - check requirements.txt file
+- **Frontend:** next, react, tailwindcss  
+- **Backend:** fastapi, sqlalchemy, psycopg2-binary, langchain, uvicorn, google-ai-generativelanguage, faiss-cpu, python-dotenv, pytest, and more (see `requirements.txt`)
 
 ---
 
-## 🙏 Acknowledgements
+## Resources
 
-- [LangChain](https://github.com/langchain-ai/langchain)
-- [FastAPI](https://fastapi.tiangolo.com/)
-- [NeonDB](https://neon.tech/)
-- [Next.js](https://nextjs.org/)
+- [LangChain](https://github.com/langchain-ai/langchain)  
+- [FastAPI](https://fastapi.tiangolo.com/)  
+- [NeonDB](https://neon.tech/)  
+- [Next.js](https://nextjs.org/)  
 - [FAISS](https://github.com/facebookresearch/faiss)
 
 ---
 
-**Build your own AI project assistant and supercharge your productivity!**
+## 🛠️ Contribution
+
+Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/harsha-1807/LangChain-Project-Assistant/issues).
+
+---
+
+**Build your own AI-powered project assistant and supercharge your team productivity!**
