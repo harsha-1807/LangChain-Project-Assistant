@@ -221,7 +221,7 @@ async def chat_endpoint(request: Request, db: Session = Depends(get_db)):
     vector_store = get_vector_store(db)
     qa_chain = get_qa_chain(vector_store)
 
-    modified_user_message = user_message + " Please provide the answer without any special characters."
+    modified_user_message = user_message + "provide the answer without any special characters except fullstop and format dates properly if present."
 
     answer = qa_chain.run(modified_user_message)
 
