@@ -221,7 +221,7 @@ async def chat_endpoint(request: Request, db: Session = Depends(get_db)):
     vector_store = get_vector_store(db)
     qa_chain = get_qa_chain(vector_store)
 
-    modified_user_message = user_message + "provide the answer without any special characters except fullstop and format dates properly if present."
+    modified_user_message = user_message + "provide the answer without any special characters except fullstop and format dates properly if present.You are an assistant helping users get project and task information. If the data is not sufficient to decide if a project or task is delayed, provide relevant details such as status, assigned people, deadlines, or percent complete to help the user."
 
     answer = qa_chain.run(modified_user_message)
 
